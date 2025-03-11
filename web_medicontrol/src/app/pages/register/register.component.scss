@@ -1,0 +1,29 @@
+// filepath: e:\miso\5ux\misw4302-medicontrol\web_medicontrol\src\app\pages\register\register.component.scss
+@import '../../../styles.scss';
+
+.background-color {
+  background-color: $background-color;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mr-3 {
+  margin-right: 1rem;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin: 1.5rem 0;
+}

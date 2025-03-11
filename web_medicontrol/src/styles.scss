@@ -31,6 +31,12 @@ h2 {
     font-size: 1rem;
 }
 
+.body-l {
+  font-weight: 400;
+  font-size: 1.125rem;
+  color: $cool-gray90;
+}
+
 // Estilos globales
 html, body {
   height: 100%;
@@ -79,6 +85,14 @@ app-root {
             color: $placeholder;
             opacity: 0.7; // Ajusta la opacidad según sea necesario
         }
+    }
+}
+
+.form-check {
+    margin-bottom: 10px;
+
+    input {
+        margin-right: 10px;
     }
 }
 
