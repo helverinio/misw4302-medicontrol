@@ -12,14 +12,14 @@
         <h2 class="mb-4">Log In</h2>
         <p></p>
         <p></p>
-        <form>
+        <form (submit)="onSubmit()">
           <div class="form-group">
             <label class="body-s" for="email">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Ingrese su dirección de email">
+            <input type="email" class="form-control" [ngClass]="{'error-input': isEmailError}" id="email" placeholder="Ingrese su dirección de email">
           </div>
           <div class="form-group">
             <label class="body-s" for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Ingrese su Password">
+            <input type="password" class="form-control" [ngClass]="{'error-input': isPasswordError}"  id="password" placeholder="Ingrese su Password">
           </div>
           <div class="d-flex align-items-center mb-3">
             <div class="form-check">
