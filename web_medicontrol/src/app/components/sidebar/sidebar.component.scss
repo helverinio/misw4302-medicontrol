@@ -1,0 +1,73 @@
+@import '../../../styles.scss';
+
+.sidebar-container {
+  border-right: 1px solid $cool-gray20;
+  height: 100vh;
+  padding: 24px 16px;
+
+  h4 {
+    color: $cool-gray60;
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+
+  .sidebar-header {
+    .d-flex {
+      align-items: center;
+      justify-content: center;
+    }
+
+    img {
+      width: 40px;
+      height: 40px;
+    }
+
+    h4 {
+      margin-left: 10px;
+      margin-bottom: 0;
+    }
+  }
+
+  .sidebar-user {
+    text-align: center;
+    padding: 1rem 0;
+
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+  }
+
+  .sidebar-search {
+    .input-group {
+      background-color: $cool-gray10;
+      padding: 4px 0;
+      border-bottom: 1px solid $cool-gray30;
+      margin-bottom: 10px;
+
+      input {
+        background-color: $cool-gray10;
+        border: none;
+      }
+
+      #search-icon {
+        background-color: $cool-gray10;
+        border: none;
+      }
+    }
+  }
+
+  .nav {
+    &-link {
+      padding: 0.5rem;
+      color: $cool-gray90;
+      font-weight: 500;
+      border-bottom: 1px solid $cool-gray10;
+
+      &:hover {
+        background-color: $cool-gray10;
+      }
+    }
+  }
+}
