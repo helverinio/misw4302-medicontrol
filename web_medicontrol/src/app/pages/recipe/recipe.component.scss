@@ -1,0 +1,64 @@
+// filepath: e:\miso\5ux\misw4302-medicontrol\web_medicontrol\src\app\pages\recipe\recipe.component.scss
+@import '../../../styles.scss';
+
+.recipe-container {
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: $cool-gray10;
+  padding: 24px;
+
+  .card {
+    border-radius: 0%;
+    margin-top: 1.5rem !important;
+  }
+
+  .small-card {
+    border-radius: 0;
+    border: 1px solid $cool-gray20;
+    margin: 10px;
+    width: calc(25% - 20px);
+    display: inline-flex;
+    flex-direction: column;
+    vertical-align: top;
+    max-width: 300px;
+    height: 450px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    .card-body {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+
+      h5 {
+        margin: 10px 0;
+      }
+
+      p {
+        margin: 10px 0;
+        flex-grow: 1;
+      }
+
+      a {
+        color: $primary90;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .create-button {
+    display: block;
+    margin: 20px auto;
+    max-width: 200px;
+  }
+}

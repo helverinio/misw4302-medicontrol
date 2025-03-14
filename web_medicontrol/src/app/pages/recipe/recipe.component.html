@@ -1,0 +1,18 @@
+<div class="recipe-container">
+    <h2>Centro de Recetas</h2>
+    <div class="card mt-12">
+      <div class="card-body">
+        <div class="card small-card mt-4" *ngFor="let recipe of recipes">
+          <img [src]="recipe.image" alt="{{recipe.title}}" class="card-img-top">
+          <div class="card-body">
+            <h5>{{recipe.title}}</h5>
+            <p class="body-m">{{recipe.description}}</p>
+            <a class="button-l" [href]="recipe.link">Editar <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+        <button class="btn btn-primary create-button" (click)="createNewRecipe()">
+          Crear Nueva Receta <i class="bi bi-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>

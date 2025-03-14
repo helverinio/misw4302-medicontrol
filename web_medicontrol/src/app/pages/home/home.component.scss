@@ -1,0 +1,117 @@
+@import '../../../styles.scss';
+
+.home-container {
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: $cool-gray10;
+  padding: 24px;
+}
+
+.card {
+  border-radius: 0;
+  border: 1px solid $cool-gray20;
+  border-top: 3px solid $primary90;
+
+  .card-header {
+    background-color: $cool-gray10;
+    border-bottom: none;
+    padding: 0 8px;
+    height: 64px;
+    overflow: hidden;
+
+    .nav-item {
+      a {
+        height: 64px;
+        padding-top: 10px;
+
+        .spinner-border {
+          color: $primary90 !important;
+          margin-right: 10px;
+        }
+
+        i {
+          color: green;
+          margin-right: 10px;
+        }
+
+        .nav-link-detail {
+          display: block;
+          margin-left: 30px;
+        }
+      }
+
+      &:hover {
+        border: none;
+        cursor: pointer;
+      }
+    }
+
+    .nav-link.active {
+      border: none;
+    }
+  }
+}
+
+.table {
+  border: 1px solid $cool-gray20;
+
+  th, tr {
+    height: 48px;
+    background-color: $cool-gray10;
+  }
+
+  .check {
+    padding-top: 22px;
+  }
+}
+
+.content-left {
+  border-right: 1px solid $cool-gray20;
+}
+
+.btn-primary {
+  max-width: 200px;
+}
+
+.tab-content {
+  padding: 0 5rem;
+}
+
+.image {
+  float: left;
+}
+
+.delete {
+  clear: both;
+  display: block;
+  text-decoration: none;
+  color: $cool-gray90;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: red;
+  }
+}
+
+.tab-pane .left h6 {
+  padding-bottom: 10px;
+}
+
+.right {
+  padding-top: 30px;
+
+  ul {
+    margin-top: 20px;
+  }
+}
+
+.left, .content-form {
+  padding: 0;
+}
+
+.card-body {
+  padding-top: 50px;
+}
+
