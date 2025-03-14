@@ -1,0 +1,111 @@
+// Definición de variables
+$background-color: #EFF6FF; // Puedes cambiar este valor al color que desees
+$cool-gray90: #1F2937;
+$cool-gray60: #2563EB;
+$cool-gray30: #C1C7CD;
+$cool-gray10: #F2F4F8;
+$placeholder: #9BA2AE;
+$md-title: #1F2937;
+
+//textos
+h1 {
+    font-weight:700;
+    font-size: 3.9375rem;
+    color: $md-title;
+}
+  
+h2 {
+  font-weight:700;
+  font-size: 2.625rem;
+  color: $cool-gray90;
+}
+
+.body-s {
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: $cool-gray90;
+}
+
+.body-m {
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.body-l {
+  font-weight: 400;
+  font-size: 1.125rem;
+  color: $cool-gray90;
+}
+
+// Estilos globales
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto';
+  display: flex;
+  flex-direction: column;
+}
+
+app-root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.h-100 {
+  height: 100vh !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 10px;
+
+    label{
+        margin-bottom: 5px;
+    }
+
+    input {
+        width: 100%;
+        background-color: $cool-gray10;
+        border-radius: 0%;
+        border: none;
+        border-bottom: 1px solid $cool-gray30;
+        height: 48px;
+        padding: 12px 16px;
+        @extend .body-m;
+
+        &::placeholder {
+            color: $placeholder;
+            opacity: 0.7; // Ajusta la opacidad según sea necesario
+        }
+    }
+}
+
+.form-check {
+    margin-bottom: 10px;
+
+    input {
+        margin-right: 10px;
+    }
+}
+
+.btn-primary {
+    background-color: $cool-gray60;
+    color: white;
+    border: none;
+    border-radius: 0%;
+    padding: 12px 16px;
+    width: 100%;
+    cursor: pointer;
+    @extend .body-m;
+}
+.error-input {
+    border: 1px solid red !important;
+}
