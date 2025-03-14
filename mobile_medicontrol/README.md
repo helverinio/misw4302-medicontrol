@@ -3,12 +3,17 @@
 ## Pantallas implementadas
 
 
-- **Autenticación de usuario**: Orlando Arnedo
-- **Olvidó su contraseña**: Orlando Arnedo
-- **Registro de usuario**: Orlando Arnedo
-- **Home - Recetas activas**: Helvert Wiesner
-- **Detalle Receta**: Helvert Wiesner
-- **Iniciar por voz**: Helvert Wiesner
+- **Autenticación de usuario**: By Orlando Arnedo
+- **Olvidó su contraseña**: By Orlando Arnedo
+- **Registro de usuario**: By Orlando Arnedo
+- **Home - Recetas activas**: By Helvert Wiesner
+- **Detalle Receta**: By Helvert Wiesner
+- **Iniciar por voz**: By Helvert Wiesner
+
+## Flujo de navegacion recomendado:
+- Login -> Olvidó su contraseña
+- Login -> Registrese
+- Login -> Iniciar sesion -> Home -> Seleccionar receta -> Iniciar por voz
 
 ## Requisitos previos
 
