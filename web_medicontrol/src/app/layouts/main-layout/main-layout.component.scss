@@ -1,0 +1,13 @@
+.app-container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 250px; /* Adjust the width as needed */
+  background-color: white; /* Optional: Add background color */
+}
+
+.content {
+  flex-grow: 1;
+}

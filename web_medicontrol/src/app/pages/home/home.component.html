@@ -1,0 +1,118 @@
+
+<div class="home-container"> 
+    <h2>Pacientes</h2>
+    <div class="card mt-4">
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+          <li class="nav-item w-50">
+            <a class="nav-link subtitle-s" [ngClass]="{'active': activeTabIndex === 1}" id="tab1-tab" data-toggle="tab" (click)="setActiveTab(1)" role="tab" aria-controls="tab1" aria-selected="true"> 
+                <div *ngIf="activeTabIndex === 1" class="spinner-border spinner-border-sm text-primary ml-2" role="status"></div>
+                <i *ngIf="activeTabIndex === 2" class="bi bi-check-circle-fill"></i>
+                1. Asignar Pacientes
+                <span class="nav-link-detail body-xs">Asigne los pacientes a la receta</span>
+            </a>
+            
+          </li>
+          <li class="nav-item w-50">
+            <a class="nav-link subtitle-s" [ngClass]="{'active': activeTabIndex === 2}" id="tab2-tab" data-toggle="tab" (click)="setActiveTab(2)" role="tab" aria-controls="tab2" aria-selected="false">
+                <div *ngIf="activeTabIndex === 2" class="spinner-border spinner-border-sm text-primary ml-2" role="status"></div>
+                2. Editar receta
+                <span class="nav-link-detail body-xs">Edite las propiedades de la receta</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade" [ngClass]="{'show active': activeTabIndex === 1}" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+            <h6>Asignar Pacientes</h6>
+            <hr>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th class="text-center"><input type="checkbox" (change)="toggleAll($event)"></th>
+                    <th colspan="1" scope="col">Pacientes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of users">
+                    <td class="text-center check"><input type="checkbox" [(ngModel)]="user.selected"></td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img [src]="user.image" alt="User Image" class="rounded-circle" width="40" height="40">
+                        <div class="ml-3">
+                          <div class="subtitle-s">{{ user.name }}</div>
+                          <div class="body-xs">{{ user.email }}</div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="d-flex justify-content-end">
+                <button class="btn btn-primary">Crear nueva receta</button>
+              </div>
+          </div>
+          <div class="tab-pane fade" [ngClass]="{'show active': activeTabIndex === 2}" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+            <div class="row">
+                <div class="col-md-6 left">
+                    <h6>Imagen de la receta</h6>
+                    <div class="content-left">
+                      <div class="col-md-6 image d-flex flex-column align-items-center">
+                          <img src="../../../assets/images/receta_image.png" alt="Imagen de la receta" class="img-fluid">
+                      </div>
+                      <div class="col-md-6 buttons d-flex flex-column align-items-center">
+                        <button class="btn btn-outline-secondary mb-2">Cargar imagen</button>
+                        <a href="#" class="delete">Eliminar imagen</a>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-md-6 right">
+                    <div class="col-md-12">
+                        <span class="body-l">Lista de Medicamentos</span>
+                        <ul>
+                            <li class="body-s" *ngFor="let medicamento of medicamentos">{{ medicamento }}</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <div class="col-md-12 content-form">
+                    <h6>Detalle</h6>
+                    <form (submit)="onSubmit()">
+                      <div class="form-group">
+                        <label class="body-s" for="name">Nombre</label>
+                        <input type="text" class="form-control" [ngClass]="{'error-input': isNameError}" id="name" placeholder="Nombre de la receta">
+                      </div>
+                      <div class="form-group">
+                        <label class="body-s" for="desc">Descripción</label>
+                        <input type="text" class="form-control" [ngClass]="{'error-input': isDescripcionError}" id="desc" placeholder="Descripción de la receta">
+                      </div>
+                      <div class="form-group">
+                        <label class="body-s" for="medicamento">Medicamento</label>
+                        <input type="text" class="form-control" [ngClass]="{'error-input': isMedicamentoError}" id="medicamento" placeholder="Ingrese el medicamento a la receta">
+                      </div>
+                      <div class="d-flex flex-wrap justify-content-between">  
+                        <div class="form-group flex-fill mr-2">
+                          <label class="body-s" for="frecuency">Frecuencia (cada...)</label>
+                          <input type="text" class="form-control" [ngClass]="{'error-input': isfrecError}" id="frecuency" placeholder="ej: 8 horas">
+                        </div>
+                        <div class="form-group flex-fill mx-2">
+                          <label class="body-s" for="time">Tiempo</label>
+                          <input type="text" class="form-control" [ngClass]="{'error-input': isTimeError}" id="time" placeholder="ej: 5 días">
+                        </div>
+                        <div class="form-group flex-fill ml-2">
+                          <label class="body-s" for="lastname">Dosis</label>
+                          <input type="text" class="form-control" [ngClass]="{'error-input': isDosisError}" id="lastname" placeholder="ej: 3 puff">
+                        </div>
+                      </div>
+                      <div class="d-flex justify-content-end">
+                        <button class="btn btn-primary">Guardar</button>
+                      </div>
+                    </form>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
