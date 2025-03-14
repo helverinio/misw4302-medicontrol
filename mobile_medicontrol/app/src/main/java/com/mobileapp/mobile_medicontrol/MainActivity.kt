@@ -33,12 +33,17 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
 import com.mobileapp.mobile_medicontrol.ui.theme.MediBlue
 import com.mobileapp.mobile_medicontrol.ui.theme.MediTextGray
 import com.mobileapp.mobile_medicontrol.ui.theme.MediWhite
 import com.mobileapp.mobile_medicontrol.ui.theme.Mobile_medicontrolTheme
 import com.mobileapp.mobile_medicontrol.ForgotPasswordScreen
 import com.mobileapp.mobile_medicontrol.SignUpScreen
+import com.mobileapp.mobile_medicontrol.HomeScreen
+import com.mobileapp.mobile_medicontrol.ItemDetailScreen
+import com.mobileapp.mobile_medicontrol.VoiceCommandScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,6 +74,11 @@ fun AppNavigation() {
                 },
                 onRegisterClick = {
                     navController.navigate("signup")
+                },
+                onLoginSuccess = {
+                    navController.navigate("home") {
+                        popUpTo("login") { inclusive = true }
+                    }
                 }
             )
         }
@@ -94,6 +104,45 @@ fun AppNavigation() {
                 }
             )
         }
+        composable("home") {
+            HomeScreen(
+                onNavigateToSettings = {
+                    // TODO: Add settings navigation when implemented
+                },
+                onItemClick = { title ->
+                    navController.navigate("itemDetail/$title")
+                },
+                onLogout = {
+                    navController.navigate("login") {
+                        popUpTo("home") { inclusive = true }
+                    }
+                }
+            )
+        }
+        composable(
+            route = "itemDetail/{title}",
+            arguments = listOf(navArgument("title") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val title = backStackEntry.arguments?.getString("title") ?: ""
+            ItemDetailScreen(
+                medicationName = if (title == "Crisis Enero") "Salbutamol" else "Furato de mometasona",
+                medicationDosage = if (title == "Crisis Enero") "3 puff con inhalacamara" else "50 mcg, 2 puffs por la noche",
+                onBackClick = {
+                    navController.popBackStack()
+                },
+                onVoiceCommandClick = {
+                    navController.navigate("voiceCommand")
+                }
+            )
+        }
+        
+        composable("voiceCommand") {
+            VoiceCommandScreen(
+                onBackClick = {
+                    navController.popBackStack()
+                }
+            )
+        }
     }
 }
 
@@ -101,7 +150,8 @@ fun AppNavigation() {
 @Composable
 fun LoginScreen(
     onForgotPasswordClick: () -> Unit = {},
-    onRegisterClick: () -> Unit = {}
+    onRegisterClick: () -> Unit = {},
+    onLoginSuccess: () -> Unit = {}
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -199,8 +249,7 @@ fun LoginScreen(
                     Text(
                         text = if (passwordVisible) "Ocultar" else "Mostrar",
                         color = MediBlue,
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Medium
+                        fontSize = 14.sp
                     )
                 }
             },
@@ -215,21 +264,19 @@ fun LoginScreen(
         
         // Forgot Password
         Text(
-            text = "¿Olvidó la contraseña?",
+            text = "¿Olvidó su contraseña?",
             fontSize = 14.sp,
             color = MediBlue,
-            textAlign = TextAlign.End,
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 8.dp)
+                .align(Alignment.End)
                 .clickable(onClick = onForgotPasswordClick)
         )
         
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(32.dp))
         
         // Login Button
         Button(
-            onClick = { /* TODO: Handle login */ },
+            onClick = onLoginSuccess,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(50.dp),
@@ -245,24 +292,27 @@ fun LoginScreen(
             )
         }
         
-        Spacer(modifier = Modifier.weight(1f))
+        Spacer(modifier = Modifier.height(16.dp))
         
-        // Register Link
+        // Register
         Row(
-            modifier = Modifier.padding(bottom = 24.dp),
+            modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "¿No tienes cuenta? ",
+                text = "¿No tiene una cuenta?",
                 fontSize = 14.sp,
                 color = MediTextGray
             )
+            
+            Spacer(modifier = Modifier.width(4.dp))
+            
             Text(
-                text = "Regístrate",
+                text = "Regístrese",
                 fontSize = 14.sp,
-                color = MediBlue,
                 fontWeight = FontWeight.Medium,
+                color = MediBlue,
                 modifier = Modifier.clickable(onClick = onRegisterClick)
             )
         }
